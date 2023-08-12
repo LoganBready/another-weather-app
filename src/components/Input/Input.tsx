@@ -1,3 +1,5 @@
+import styles from './Input.module.scss'
+
 interface InputProps {
   city?: string
   setCity?: any
@@ -8,7 +10,7 @@ export const Input = ({ city, setCity, handleSearch }: InputProps) => {
   const handleInputChange = (e: any) => setCity(e.target.value)
 
   return (
-    <div>
+    <div className={styles.inputContainer}>
       <input
         type="text"
         placeholder="Enter a city name..."

@@ -1,0 +1,6 @@
+TODO
+
+- isLoading spinning wheel thing
+- conditionally render weather card if weatherData is not undefined
+- style weather card
+- have different states of the weather card based on weather code

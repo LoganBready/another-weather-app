@@ -1,12 +1,6 @@
 import { NextApiRequest, NextApiResponse } from 'next'
 import axios from 'axios'
 
-export const config = {
-  api: {
-    externalResolver: true,
-  },
-}
-
 export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse
@@ -14,14 +8,12 @@ export default async function handler(
   if (req.method === 'GET') {
     const API_KEY = process.env.API_KEY
     const BASE_URL = process.env.BASE_URL
-    const city = req.query.city as string
-    const days = req.query.days as string
+    const latitude = req.query.latitude as string
+    const longitude = req.query.longitude as string
 
     try {
       const response = await axios.get(
-        `${BASE_URL}/current.json?key=${API_KEY}&q=${city}${
-          days && `&days=${days}`
-        }&api=no&alerts=no`
+        `${BASE_URL}/current.json?key=${API_KEY}&q=${latitude},${longitude}`
       )
       const data = response.data
       res.status(200).json(data)
